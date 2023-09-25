@@ -442,6 +442,17 @@ local servers = {
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
+  pylsp = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          -- enabled = false,
+          maxLineLength = 120,
+        },
+      },
+    },
+  },
+
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
