@@ -575,6 +575,20 @@ require('lazy').setup({
         -- tsserver = {},
         --
 
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                mccabe = { enabled = true },
+                pycodestyle = { enabled = true, maxLineLength = 119 },
+                pyflakes = { enabled = true },
+                autopep8 = { enabled = false },
+                yapf = { enabled = false },
+              },
+            },
+          },
+        },
+
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
