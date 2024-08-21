@@ -896,6 +896,7 @@ require('lazy').setup({
   require 'custom.plugins.copilot',
   require 'custom.plugins.fugitive',
   require 'custom.plugins.tagbar',
+  require 'custom.plugins.dadbod-ui',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
