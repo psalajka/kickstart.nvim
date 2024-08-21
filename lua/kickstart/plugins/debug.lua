@@ -64,6 +64,28 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'php-debug-adapter',
+      },
+
+      automatic_setup = true, -- This might be unnecessary
+    }
+
+    dap.adapters.php = {
+      type = 'executable',
+      command = 'php-debug-adapter', -- This is the binary provided by Mason
+      -- args = { '--port', '9003' },
+    }
+
+    dap.configurations.php = {
+      {
+        type = 'php',
+        request = 'launch',
+        name = 'Listen for Xdebug',
+        port = 9003,
+        pathMappings = {
+          -- ['/var/www/html/'] = '${workspaceFolder}', -- Adjust this according to your setup
+          ['/var/www/html/wp-content/plugins/ai-trader'] = '${workspaceFolder}', -- Adjust this according to your setup
+        },
       },
     }
 
