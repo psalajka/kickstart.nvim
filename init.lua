@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -851,6 +851,10 @@ require('lazy').setup({
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
+
+        trigger = {
+          show_on_keyword = false,
+        },
       },
 
       sources = {
@@ -985,6 +989,12 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   -- { import = 'custom.plugins' },
+  require 'custom.plugins.fugitive',
+  -- require 'custom.plugins.copilot-chat',
+  require 'custom.plugins.copilot',
+  require 'custom.plugins.dadbod',
+  -- require 'custom.plugins.avante',
+  require 'custom.plugins.code-companion',
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
@@ -1011,6 +1021,47 @@ require('lazy').setup({
     },
   },
 })
+
+vim.o.relativenumber = true
+
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+
+vim.o.foldmethod = 'indent'
+vim.o.foldlevel = 99
+
+-- vim.api.nvim_create_autocmd({"BufRead", "BufWinEnter"}, {
+--   pattern = "*",
+--   callback = function()
+--     vim.o.foldlevel = 99
+--   end,
+-- })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'lua',
+  desc = 'Set "vim: ts=2 sts=2 sw=2 et" for all Lua files',
+  group = vim.api.nvim_create_augroup('kickstart-filetype-lua', { clear = true }),
+  callback = function()
+    vim.o.tabstop = 2
+    vim.o.softtabstop = 2
+    vim.o.shiftwidth = 2
+    vim.o.expandtab = true
+  end,
+})
+
+-- Avante
+-- views can only be fully collapsed with the global statusline
+-- vim.opt.laststatus = 3
+
+-- Code Companion
+vim.keymap.set({ 'n', 'v' }, '<C-a>', '<cmd>CodeCompanionActions<cr>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<LocalLeader>a', '<cmd>CodeCompanionChat Toggle<cr>', { noremap = true, silent = true })
+vim.keymap.set('v', 'ga', '<cmd>CodeCompanionChat Add<cr>', { noremap = true, silent = true })
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd [[cab cc CodeCompanion]]
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
