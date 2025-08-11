@@ -3,7 +3,15 @@
 return {
   {
     'olimorris/codecompanion.nvim',
-    opts = {},
+    opts = {
+      display = {
+        chat = {
+          window = {
+            width = 0.333,
+          },
+        },
+      },
+    },
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',

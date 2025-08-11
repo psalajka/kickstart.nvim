@@ -994,7 +994,7 @@ require('lazy').setup({
   require 'custom.plugins.copilot',
   require 'custom.plugins.dadbod',
   -- require 'custom.plugins.avante',
-  require 'custom.plugins.code-companion',
+  require 'custom.plugins.codecompanion',
   require 'custom.plugins.lazygit',
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
