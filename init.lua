@@ -996,6 +996,7 @@ require('lazy').setup({
   -- require 'custom.plugins.avante',
   require 'custom.plugins.codecompanion',
   require 'custom.plugins.lazygit',
+  require 'custom.plugins.neopyter',
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
