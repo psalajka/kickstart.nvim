@@ -1064,5 +1064,11 @@ vim.keymap.set('v', 'ga', '<cmd>CodeCompanionChat Add<cr>', { noremap = true, si
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd [[cab cc CodeCompanion]]
 
+-- Command to start Python 3 (executable, not directory). Setting this makes
+-- startup faster. Useful for working with virtualenvs. Must be set before any
+-- check for has("python3").  >vim
+--     let g:python3_host_prog = '/path/to/python3'
+vim.g.python3_host_prog = '~/.pyenv/versions/3.12.9/bin/python3'
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
